@@ -2,9 +2,11 @@ import MdView from '@/components/MdView'
 import ViewContainer from '@/components/ViewContainer'
 import { useAppDispatch, useAppSelector } from '@/store'
 import { detailContentAction } from '@/store/module/detail'
-import htmlCodeLight from '@/utils/markedHighlight'
 import React, { memo, useEffect } from 'react'
-import { useLocation, useParams, useSearchParams } from 'react-router-dom'
+import DetailWrapper from '@/components/Wrapper'
+import detailBg from '@/components/Wrapper/images/detail.png'
+import { DetailStyle } from './style'
+import { useParams } from 'react-router-dom'
 
 const Detail = () => {
   const dispatch = useAppDispatch()
@@ -18,12 +20,14 @@ const Detail = () => {
   }, [])
 
   return (
-    <ViewContainer>
-      {/* <div
-        dangerouslySetInnerHTML={{ __html: htmlCodeLight(data.content || '') }}
-      ></div> */}
-      <MdView content={data.content} />
-    </ViewContainer>
+    <DetailStyle>
+      <DetailWrapper wrapperBg={detailBg} />
+      <ViewContainer size="mini">
+        <div className="detail-content">
+          <MdView content={data.content} />
+        </div>
+      </ViewContainer>
+    </DetailStyle>
   )
 }
 

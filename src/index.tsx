@@ -10,7 +10,6 @@ import theme from './assets/theme'
 import { ConfigProvider } from 'antd'
 import zhCN from 'antd/locale/zh_CN'
 import 'dayjs/locale/zh-cn'
-// import 'highlight.js/styles/atom-one-light.min.css'
 
 const root = ReactDOM.createRoot(document.getElementById('root') as HTMLElement)
 root.render(

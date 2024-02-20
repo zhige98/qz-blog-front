@@ -12,7 +12,7 @@ export const Container = styled(theme.contentPadding())`
   .view_contain_large {
     max-width: 1344px;
   }
-  .view_contain_large {
+  .view_contain_full {
     max-width: 100%;
   }
 `

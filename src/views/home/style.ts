@@ -2,7 +2,6 @@ import styled from 'styled-components'
 
 export const Content = styled.div`
   display: flex;
-  margin-top: 48px;
   .content_left {
     width: 300px;
     height: 400px;

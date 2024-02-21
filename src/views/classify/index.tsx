@@ -5,6 +5,7 @@ import ViewContainer from '@/components/ViewContainer'
 import ClassifyWrapper from '@/components/Wrapper'
 import classifyBg from '@/components/Wrapper/images/classify.png'
 import { ClassifyStyle } from './style'
+import Footer from '@/components/Footer'
 
 const Classify = () => {
   const [labelIdList, setLabelIds] = useState<number[]>([])
@@ -13,7 +14,7 @@ const Classify = () => {
   }
   return (
     <div>
-      <ClassifyWrapper wrapperBg={classifyBg} />
+      <ClassifyWrapper wrapperbg={classifyBg} />
       <ViewContainer>
         <ClassifyStyle>
           <div className="classify_left">
@@ -24,6 +25,7 @@ const Classify = () => {
           </div>
         </ClassifyStyle>
       </ViewContainer>
+      <Footer footerbg={classifyBg} />
     </div>
   )
 }

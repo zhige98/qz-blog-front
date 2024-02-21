@@ -5,11 +5,12 @@ import HomeList from './components/HomeList'
 import ViewContainer from '@/components/ViewContainer'
 import homeBg from '@/components/Wrapper/images/home.png'
 import HomeWrapper from '@/components/Wrapper'
+import Footer from '@/components/Footer'
 
 const Home = () => {
   return (
     <div>
-      <HomeWrapper wrapperBg={homeBg} type="home" />
+      <HomeWrapper wrapperbg={homeBg} type="home" />
       <div id="home-content">
         <ViewContainer>
           <Content>
@@ -22,6 +23,7 @@ const Home = () => {
           </Content>
         </ViewContainer>
       </div>
+      <Footer footerbg={homeBg} />
     </div>
   )
 }

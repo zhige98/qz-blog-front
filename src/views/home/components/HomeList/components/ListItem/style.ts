@@ -13,11 +13,30 @@ export const Item = styled.div`
   .right {
     display: flex;
     flex-direction: column;
+    justify-content: space-between;
     margin-left: 24px;
     flex: 1;
   }
+  .content-desc {
+    display: flex;
+    align-items: center;
+    color: #858585;
+    font-size: 12px;
+  }
   .title-box {
     margin-bottom: 12px;
+  }
+  .time-icon {
+    margin-right: 4px;
+  }
+  .content-time {
+    margin-right: 12px;
+  }
+  .segment {
+    margin-right: 12px;
+  }
+  .label-icon {
+    margin-right: 6px;
   }
 `
 

@@ -4,4 +4,6 @@ export interface DetailItem {
   content: string
   description: string
   id: number
+  updateTime: string
+  labels: { id: number; name: string }[]
 }

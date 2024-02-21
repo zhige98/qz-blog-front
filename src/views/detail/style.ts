@@ -4,7 +4,6 @@ import hoverLinkSvg from './images/hoverLink.svg'
 
 export const DetailStyle = styled.div`
   .detail-content {
-    margin-top: 48px;
     padding: 48px;
     box-shadow: 0 3px 8px 6px rgba(7, 17, 27, 0.05);
     h1,

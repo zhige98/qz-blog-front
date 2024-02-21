@@ -1,10 +1,14 @@
 import React, { memo, useState, useRef, useEffect, FC } from 'react'
 import { DownOutlined } from '@ant-design/icons'
-import { WrapperStyle, SiteInfoStyle } from './style'
+import { FieldTimeOutlined, GroupOutlined } from '@ant-design/icons'
+import { WrapperStyle, SiteInfoStyle, DetailInfo } from './style'
+import { DetailItem } from '@/views/detail/type'
+import { formatTime } from '@/utils'
 
 interface IWrapper {
-  type?: 'home' | 'other'
-  wrapperBg: string
+  type?: 'home' | 'detail' | 'other'
+  wrapperbg: string
+  detailData?: DetailItem
 }
 
 function SiteInfo() {
@@ -68,9 +72,10 @@ const Wrapper: FC<IWrapper> = (props) => {
     const element = document.querySelector('#home-content')
     element?.scrollIntoView({ behavior: 'smooth' })
   }
+
   return (
     <WrapperStyle
-      wrapperBg={props.wrapperBg}
+      wrapperbg={props.wrapperbg}
       type={props.type ? props.type : 'other'}
     >
       {props.type === 'home' && (
@@ -80,6 +85,37 @@ const Wrapper: FC<IWrapper> = (props) => {
             <div className="down-icon">{DownElement()}</div>
           </div>
         </>
+      )}
+      {props.type === 'detail' && props.detailData && (
+        <DetailInfo>
+          <div className="info-title">{props.detailData.title}</div>
+          <div className="info-desc">
+            <div className="info-box">
+              <div className="info-time">
+                <FieldTimeOutlined className="time-icon" />
+                发表于：{formatTime(props.detailData.createTime)}
+                <span className="segment">|</span>
+              </div>
+              <div className="info-time">
+                <FieldTimeOutlined className="time-icon" />
+                更新于：{formatTime(props.detailData.updateTime)}
+                <span className="segment">|</span>
+              </div>
+
+              <GroupOutlined className="label-icon" />
+              {props.detailData.labels && (
+                <div>
+                  {props.detailData.labels.map((item, index) => (
+                    <span key={item.id}>
+                      {index > 0 && '、'}
+                      {item.name}
+                    </span>
+                  ))}
+                </div>
+              )}
+            </div>
+          </div>
+        </DetailInfo>
       )}
     </WrapperStyle>
   )

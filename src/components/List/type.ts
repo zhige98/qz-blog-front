@@ -8,7 +8,7 @@ export interface UseListProps<T = any> {
   api: (page: number, size: number) => Promise<ApiResult<T>>
   readonly size?: number
   readonly renderItem: (item: T, index: number) => ReactNode
-  readonly finishedTest?: string | null | (() => ReactNode)
+  readonly finishedText?: string | null | (() => ReactNode)
   readonly renderSkeleton?: () => ReactNode
 }
 

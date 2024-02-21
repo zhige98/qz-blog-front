@@ -4,4 +4,6 @@ export interface IListItem {
   imgUrl: string
   description: string
   id: number
+  updateTime: string
+  labels: string[]
 }

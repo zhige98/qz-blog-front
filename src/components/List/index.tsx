@@ -8,7 +8,7 @@ import React, {
   useState
 } from 'react'
 import { UseList, UseListProps } from './type'
-import { ListLoading } from './style'
+import { ListLoading, ListStyle } from './style'
 
 const MyList: FC<{ use: UseListProps }> = (props) => {
   const [listData, setListData] = useState<any[]>([])
@@ -76,13 +76,13 @@ const MyList: FC<{ use: UseListProps }> = (props) => {
     if (listData.length === 0) {
       return null
     }
-    const { finishedTest = '无更多数据了' } = props.use
-    if (typeof finishedTest === 'function') {
-      return finishedTest()
-    } else if (typeof finishedTest === 'object') {
-      return finishedTest
+    const { finishedText = '无更多数据了' } = props.use
+    if (typeof finishedText === 'function') {
+      return finishedText()
+    } else if (typeof finishedText === 'object') {
+      return finishedText
     } else {
-      return <div>{finishedTest}</div>
+      return <div className="finish-text">{finishedText}</div>
     }
   }, [isFinish])
 
@@ -95,30 +95,32 @@ const MyList: FC<{ use: UseListProps }> = (props) => {
   props.use.listData = listData
 
   return (
-    <Row>
-      {loading && page <= 1
-        ? new Array(size).fill('').map((_, index) => {
-            return (
-              <Col {...{ xs: 24, sm: 24 }} key={`my-skeleton-${index}`}>
-                {props.use.renderSkeleton?.()}
-              </Col>
-            )
-          })
-        : listData.map((item, index) => {
-            return (
-              <Col {...{ xs: 24, sm: 24 }} key={`my-list-${index}`}>
-                {props.use.renderItem(item, index)}
-              </Col>
-            )
-          })}
+    <ListStyle>
+      <Row>
+        {loading && page <= 1
+          ? new Array(size).fill('').map((_, index) => {
+              return (
+                <Col {...{ xs: 24, sm: 24 }} key={`my-skeleton-${index}`}>
+                  {props.use.renderSkeleton?.()}
+                </Col>
+              )
+            })
+          : listData.map((item, index) => {
+              return (
+                <Col {...{ xs: 24, sm: 24 }} key={`my-list-${index}`}>
+                  {props.use.renderItem(item, index)}
+                </Col>
+              )
+            })}
 
-      {finishRender}
-      {loading && (
-        <ListLoading>
-          <div> 加载中...</div>
-        </ListLoading>
-      )}
-    </Row>
+        {finishRender}
+        {loading && (
+          <ListLoading>
+            <div> 加载中...</div>
+          </ListLoading>
+        )}
+      </Row>
+    </ListStyle>
   )
 }
 

@@ -1,13 +1,13 @@
 import styled from 'styled-components'
 
 export const WrapperStyle = styled.div<{
-  type: 'home' | 'other'
-  wrapperBg: string
+  type: 'home' | 'other' | 'detail'
+  wrapperbg: string
 }>`
   position: relative;
   width: 100%;
   height: ${(props) => (props.type === 'home' ? '100vh' : '400px')};
-  background-image: url(${(props) => props.wrapperBg});
+  background-image: url(${(props) => props.wrapperbg});
   background-repeat: no-repeat;
   background-size: cover;
   background-position: center;
@@ -83,5 +83,36 @@ export const SiteInfoStyle = styled.div`
     100% {
       opacity: 0;
     }
+  }
+`
+
+export const DetailInfo = styled.div`
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  .info-title {
+    font-size: 42px;
+    color: #fff;
+  }
+  .info-box {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: #eee;
+    font-size: 16px;
+    margin-top: 8px;
+  }
+  .info-time {
+    margin-right: 12px;
+  }
+  .segment {
+    margin-left: 6px;
+  }
+  .time-icon {
+    margin-right: 4px;
+  }
+  .label-icon {
+    margin-right: 6px;
   }
 `
